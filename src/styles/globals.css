@@ -1,0 +1,258 @@
+/* ──────────────────────────────────────────────
+ *  Global Styles — OWNI Pro Max Gallery
+ *  Tema dark premium com glassmorphism
+ * ────────────────────────────────────────────── */
+
+/* ── CSS Custom Properties ── */
+:root {
+	/* Cores primárias — paleta minimalista de luxo */
+	--color-black-deep: #050507;
+	--color-black: #0a0a0f;
+	--color-graphite: #141419;
+	--color-charcoal: #1c1c24;
+	--color-charcoal-light: #24242e;
+	--color-slate: #2a2a36;
+	--color-silver: #8a8a9a;
+	--color-silver-light: #b0b0c0;
+	--color-white: #f0f0f5;
+	--color-white-pure: #ffffff;
+
+	/* Acentos metálicos */
+	--color-accent: #7c7cff;
+	--color-accent-glow: rgba(124, 124, 255, 0.15);
+	--color-metallic: rgba(180, 180, 210, 0.08);
+	--color-metallic-strong: rgba(180, 180, 210, 0.15);
+
+	/* Glassmorphism */
+	--glass-bg: rgba(20, 20, 28, 0.65);
+	--glass-border: rgba(255, 255, 255, 0.06);
+	--glass-border-hover: rgba(255, 255, 255, 0.12);
+	--glass-blur: 20px;
+	--glass-blur-heavy: 40px;
+
+	/* Gradientes */
+	--gradient-overlay: linear-gradient(
+		180deg,
+		transparent 0%,
+		rgba(5, 5, 7, 0.4) 60%,
+		rgba(5, 5, 7, 0.85) 100%
+	);
+	--gradient-accent: linear-gradient(135deg, #7c7cff 0%, #5a5aee 100%);
+	--gradient-progress: linear-gradient(90deg, #7c7cff 0%, #a78bfa 50%, #7c7cff 100%);
+
+	/* Sombras */
+	--shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+	--shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+	--shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+	--shadow-glow: 0 0 20px rgba(124, 124, 255, 0.1);
+
+	/* Tipografia */
+	--font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	--font-xs: 0.6875rem;
+	--font-sm: 0.75rem;
+	--font-base: 0.875rem;
+	--font-md: 1rem;
+	--font-lg: 1.25rem;
+	--font-xl: 1.5rem;
+	--font-2xl: 2rem;
+	--font-3xl: 2.5rem;
+
+	/* Espaçamento */
+	--space-xs: 0.25rem;
+	--space-sm: 0.5rem;
+	--space-md: 0.75rem;
+	--space-base: 1rem;
+	--space-lg: 1.5rem;
+	--space-xl: 2rem;
+	--space-2xl: 3rem;
+	--space-3xl: 4rem;
+
+	/* Bordas */
+	--radius-sm: 8px;
+	--radius-md: 12px;
+	--radius-lg: 16px;
+	--radius-xl: 20px;
+	--radius-full: 9999px;
+
+	/* Transições */
+	--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+	--ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+	--duration-fast: 150ms;
+	--duration-base: 250ms;
+	--duration-slow: 400ms;
+}
+
+/* ── Reset & Base ── */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--font-family);
+	font-size: var(--font-base);
+	line-height: 1.6;
+	color: var(--color-silver-light);
+	background-color: var(--color-black-deep);
+	min-height: 100dvh;
+	overflow-x: hidden;
+}
+
+#root {
+	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
+}
+
+/* ── Scrollbar Customizada ── */
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--color-slate);
+	border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--color-silver);
+}
+
+/* ── Seleção de Texto ── */
+::selection {
+	background: rgba(124, 124, 255, 0.3);
+	color: var(--color-white);
+}
+
+/* ── Focus Visible ── */
+:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+	border-radius: var(--radius-sm);
+}
+
+/* ── Links ── */
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/* ── Imagens ── */
+img,
+video {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/* ── Botões Reset ── */
+button {
+	font: inherit;
+	color: inherit;
+	background: none;
+	border: none;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* ── Utilitários de Glassmorphism ── */
+.glass-panel {
+	background: var(--glass-bg);
+	backdrop-filter: blur(var(--glass-blur));
+	-webkit-backdrop-filter: blur(var(--glass-blur));
+	border: 1px solid var(--glass-border);
+	border-radius: var(--radius-lg);
+}
+
+.glass-card {
+	background: rgba(20, 20, 28, 0.5);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border: 1px solid var(--glass-border);
+	border-radius: var(--radius-md);
+	transition:
+		border-color var(--duration-base) var(--ease-out),
+		box-shadow var(--duration-base) var(--ease-out),
+		transform var(--duration-base) var(--ease-out);
+}
+
+.glass-card:hover {
+	border-color: var(--glass-border-hover);
+	box-shadow: var(--shadow-md);
+}
+
+/* ── Animações Globais ── */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: -200% 0;
+	}
+	100% {
+		background-position: 200% 0;
+	}
+}
+
+/* ── Responsividade Base ── */
+@media (max-width: 768px) {
+	:root {
+		--font-2xl: 1.5rem;
+		--font-3xl: 2rem;
+		--space-2xl: 2rem;
+		--space-3xl: 2.5rem;
+	}
+}
+
+@media (max-width: 480px) {
+	:root {
+		--font-xl: 1.125rem;
+		--font-2xl: 1.25rem;
+		--font-3xl: 1.5rem;
+	}
+}
